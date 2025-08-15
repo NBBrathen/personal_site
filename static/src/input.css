@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+	--animate-blink: blink 1.1s steps(2, start) infinite;
+
+	@keyframes blink {
+		0%, 50% { opacity: 1; }
+		50.01%, 100% { opacity: 0; }
+	}
+}
+
+.ascii-nav .ascii-link { position: relative; padding-bottom: 2px; }
+.ascii-nav .ascii-link::after { content: '_'; position: absolute; left: 50%; transform: translateX(-50%); bottom: -6px; opacity: 0; }
+.ascii-nav .ascii-link:hover::after, .ascii-nav .ascii-link:focus::after { opacity: 1; animation: var(--animate-blink); }
+

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}Personal Website{% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+	<link rel="preload" as="image" href="{% static 'images/noel-brady.jpg' %}">
+</head>
+<body class="min-h-screen bg-neutral-950 text-neutral-200 antialiased selection:bg-blue-600/30">
+	<div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+		<div class="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-purple-500/10"></div>
+		<canvas id="ascii-canvas" class="h-full w-full"></canvas>
+	</div>
+	<header class="border-b border-white/10 bg-neutral-950/60 backdrop-blur sticky top-0 z-10">
+		<div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
+			<a href="/" class="text-lg font-semibold tracking-wide hover:text-white transition-colors">Noel Brady</a>
+			<nav class="ascii-nav space-x-6 text-sm font-mono tracking-wider select-none">
+				<a href="/" class="ascii-link text-neutral-300 inline-block">Home</a>
+				<a href="#projects" class="ascii-link text-neutral-300 inline-block">Projects</a>
+				<a href="{% url 'blog' %}" class="ascii-link text-neutral-300 inline-block">Blog</a>
+				<a href="#about" class="ascii-link text-neutral-300 inline-block">About</a>
+			</nav>
+		</div>
+	</header>
+	<main class="mx-auto max-w-6xl px-6 py-10">
+		{% block content %}{% endblock %}
+	</main>
+	<script src="{% static 'js/ascii.js' %}"></script>
+	<script src="{% static 'js/nav-ascii.js' %}"></script>
+	<script src="{% static 'js/scroll-animate.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
