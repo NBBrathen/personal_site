@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'personal_website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'your_database_name',  # The name of the database you created
+        'NAME': 'noelbrady',  # The name of the database you created
         'USER': 'admin',                # The user you created
         'PASSWORD': 'NCPD!1qSSd?Hdd?end', # The password you created
         'HOST': 'localhost',              # Or your database host
@@ -120,6 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
