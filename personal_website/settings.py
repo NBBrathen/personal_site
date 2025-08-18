@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#tzntfx85eupizug@mczj4m@*w-!gex!98gr0secf5-=zo5r@p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['your-service.onrender.com', 'yourdomain.com']
 
 
 # Application definition
@@ -75,11 +75,14 @@ WSGI_APPLICATION = 'personal_website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'your_database_name',  # The name of the database you created
+        'USER': 'admin',                # The user you created
+        'PASSWORD': 'NCPD!1qSSd?Hdd?end', # The password you created
+        'HOST': 'localhost',              # Or your database host
+        'PORT': '',                   # Default PostgreSQL port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
