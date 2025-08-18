@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#tzntfx85eupizug@mczj4m@*w-!gex!98gr0secf5-=zo5r@p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['your-service.onrender.com', 'yourdomain.com']
+ALLOWED_HOSTS = ['3.143.65.55', 'localhost']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
