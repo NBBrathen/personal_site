@@ -1,7 +1,7 @@
 {
   "scripts": {
     "tw:build": "tailwindcss -i ./static/src/input.css -o ./static/css/tailwind.css -m",
-    "tw:watch": "tailwindcss -i ./static/src/input.css -o ./static/css/tailwind.css -w"
+    "tw:watch": "tailwindcss -i ./static/src/input.css -o ./static/css/tailwind.css -w",
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.12",
