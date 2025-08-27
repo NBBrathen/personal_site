@@ -25,8 +25,19 @@ SECRET_KEY = 'django-insecure-#tzntfx85eupizug@mczj4m@*w-!gex!98gr0secf5-=zo5r@p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['3.143.65.55', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    "noel-brady.com",
+    "www.noel-brady.com",
+    "3.143.65.55",
+    "ec2-3-143-65-55.us-east-2.compute.amazonaws.com",
+    "localhost",
+    "127.0.0.1",
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://noel-brady.com",
+    "http://www.noel-brady.com",
+]
 
 # Application definition
 
