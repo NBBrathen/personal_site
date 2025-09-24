@@ -15,6 +15,25 @@
 	.cta-swap .hover-label { display: none; }
 	.cta-swap:hover .default-label { display: none; }
 	.cta-swap:hover .hover-label { display: inline; }
+
+	/* Flowy hover animation for hero buttons */
+	.hover-card { position: relative; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; will-change: transform; }
+	.hover-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+	.hover-card::after {
+		content: "";
+		position: absolute; top: -20%; bottom: -20%; left: -150%; width: 400%;
+		background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.24) 10%, rgba(255,255,255,0) 24%), radial-gradient(120px 60px at var(--x,20%) 50%, rgba(255,255,255,.12), rgba(255,255,255,0) 60%);
+		opacity: 0;
+		pointer-events: none;
+		will-change: transform;
+	}
+	.hover-card:hover::after { animation: shimmer 1.2s ease-out forwards, drift 2.8s ease-in-out infinite; opacity: 1; }
+	@keyframes shimmer { 0% { transform: translateX(-80%); } 100% { transform: translateX(80%); } }
+	@keyframes drift { 0%,100% { --x: 20%; } 50% { --x: 80%; } }
+	@media (prefers-reduced-motion: reduce) {
+		.hover-card, .hover-card:hover { transition: none; transform: none; box-shadow: none; }
+		.hover-card::after, .hover-card:hover::after { display: none; animation: none; }
+	}
 </style>
 <section class="mx-auto max-w-6xl space-y-12">
 	<div class="mb-4 grid gap-8 md:grid-cols-[1fr,380px] items-center" data-reveal>

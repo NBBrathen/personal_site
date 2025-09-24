@@ -1,0 +1,135 @@
+/* Theme variables and component overrides */
+
+/* Smooth global transitions */
+html[data-theme] body,
+html[data-theme] header,
+html[data-theme] .card,
+html[data-theme] .hover-card,
+html[data-theme] .ascii-nav .ascii-link {
+  transition: background-color .35s ease, color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+/* Default to dark if no preference (also set early in base.html) */
+html[data-theme="dark"] {
+  --bg: #0a0b0d; /* near-black */
+  --text: #e5e7eb; /* neutral-200 */
+  --text-muted: #a3a3a3; /* neutral-400 */
+  --surface: rgba(24,24,27,.6); /* neutral-900/60 */
+  --surface-border: rgba(255,255,255,.08);
+  --nav-bg: rgba(10,11,13,.6);
+  --button-bg: #1f2937; /* neutral-800 */
+  --button-fg: #f3f4f6; /* neutral-100 */
+  --button-accent: #16a34a; /* emerald-600 */
+  --ring: rgba(255,255,255,.1);
+  --selection: rgba(37, 99, 235, .3); /* blue-600/30 to match existing */
+}
+
+html[data-theme="light"] {
+  --bg: #f3eadb; /* soft beige */
+  --text: #3b2f2f; /* rich brown */
+  --text-muted: #6b4f3f; /* muted brown */
+  --surface: #fff8ed; /* warm paper card */
+  --surface-border: rgba(0,0,0,.08);
+  --nav-bg: rgba(255, 248, 237, .75);
+  --button-bg: #c26d3f; /* terracotta */
+  --button-fg: #fff8ed; /* on terracotta */
+  --button-accent: #6b8f71; /* sage */
+  --ring: rgba(0,0,0,.12);
+  --selection: rgba(194, 109, 63, .25); /* terracotta tint */
+}
+
+/* Apply base colors */
+html[data-theme] body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Selection override */
+html[data-theme] ::selection {
+  background: var(--selection);
+}
+
+/* Header/nav clarity across themes */
+html[data-theme] header {
+  background-color: var(--nav-bg) !important;
+  border-color: var(--surface-border) !important;
+}
+
+.ascii-nav .ascii-link {
+  color: var(--text-muted) !important;
+}
+.ascii-nav .ascii-link:hover {
+  color: var(--text) !important;
+}
+
+/* Cards and tags adopt theme surfaces */
+.card {
+  background-color: var(--surface) !important;
+  border-color: var(--surface-border) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+.tag {
+  background-color: color-mix(in oklab, var(--surface) 75%, transparent) !important;
+  border-color: var(--surface-border) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Buttons should always be distinct and inviting */
+.hover-card,
+#theme-toggle {
+  background-color: var(--button-bg) !important;
+  color: var(--button-fg) !important;
+  box-shadow: 0 6px 16px color-mix(in oklab, var(--button-bg) 25%, transparent);
+  border: 0;
+}
+.hover-card:hover,
+#theme-toggle:hover {
+  filter: brightness(1.05);
+}
+
+/* Subtle ring to match theme */
+.ring-white\/10,
+.ring-1 {
+  box-shadow: 0 0 0 1px var(--ring) inset !important;
+}
+
+/* Theme toggle icons: show one depending on theme */
+#theme-toggle .icon-sun,
+#theme-toggle .icon-moon {
+  position: absolute;
+  opacity: 1;
+  transition: transform .35s ease, opacity .35s ease;
+}
+/* Prevent layout from squeezing the toggle off-screen */
+#theme-toggle { flex-shrink: 0; }
+html[data-theme="dark"] #theme-toggle .icon-sun { display: none; }
+html[data-theme="light"] #theme-toggle .icon-moon { display: none; }
+
+/* Optional: rotate on theme change */
+#theme-toggle.theme-animating {
+  transform: rotate(180deg);
+}
+
+/* Remap common Tailwind text utilities to theme palette in light mode */
+html[data-theme="light"] .text-white,
+html[data-theme="light"] .text-neutral-100 {
+  color: var(--text) !important;
+}
+html[data-theme="light"] .text-neutral-200,
+html[data-theme="light"] .text-neutral-300,
+html[data-theme="light"] .text-neutral-400 {
+  color: var(--text-muted) !important;
+}
+
+/* Ensure buttons with utility backgrounds still look earthy in light mode */
+html[data-theme="light"] .bg-blue-600,
+html[data-theme="light"] .bg-neutral-800 {
+  background-color: var(--button-bg) !important;
+  color: var(--button-fg) !important;
+}
+/* Shadow tint softening */
+html[data-theme="light"] .shadow-blue-600\/20 {
+  box-shadow: 0 6px 16px color-mix(in oklab, var(--button-bg) 25%, transparent) !important;
+}
+
+
